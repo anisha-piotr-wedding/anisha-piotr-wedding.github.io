@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import { camelCase } from "lodash";
 import { SwipeableDrawer } from "@material-ui/core";
 import styled from "styled-components/macro";
+import { lightPink } from "../../constants";
 
 const DRAWER_WIDTH = 200;
 
@@ -30,7 +31,7 @@ const LeftDrawerStyles = styled.div`
     text-transform: uppercase;
 
     :hover {
-      background-color: #fbc2d2 !important;
+      background-color: ${lightPink} !important;
     }
   }
 `;

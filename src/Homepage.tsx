@@ -3,7 +3,9 @@ import styled from "styled-components/macro";
 import CountdownTimer from "./components/Carousel/CountdownTimer";
 import ImageCarousel from "./components/Carousel/ImageCarousel";
 import MenuBar from "./components/MenuBar/MenuBar";
-import { BREAKPOINT_DESKTOP } from "./constants";
+import Schedule from "./components/Schedule";
+import { BREAKPOINT_DESKTOP, lighterPink } from "./constants";
+import { useTranslate } from "./utils";
 
 const LOGO_WIDTH = 32;
 const LEFT_PERCENT = 60;
@@ -34,22 +36,47 @@ const HomepageStyles = styled.div`
     .logo {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      padding: 5em 0;
+      height: 100vh;
 
       img {
+        margin: 5em 0 0;
         width: ${LOGO_WIDTH}rem;
       }
 
       #logo-words {
+        margin: 0;
         width: ${LOGO_WIDTH / 2}rem;
         padding-top: 1em;
       }
 
       .logo-text {
         text-transform: uppercase;
+        padding: 1em 0 2em;
+        font-size: 18px;
       }
+    }
+
+    hr {
+      border-top: 1px solid grey;
+      width: 75%;
+      margin-top: 3em;
+    }
+
+    .welcome-container {
+      padding: 2em;
+      background-color: ${lighterPink};
+      border-radius: 20px;
+      width: 25em;
+    }
+
+    .welcome {
+      display: grid;
+      grid-template-rows: repeat(2, auto);
+      grid-row-gap: 2em;
+      text-align: center;
+      font-size: 18px;
     }
   }
 
@@ -93,11 +120,15 @@ export default () => {
             title="logo-words"
             alt="logo-words"
           />
-          <div className="logo-text">
-            Saturday May 8th, 2021 • 2 O'Clock in the Afternoon
+          <div className="logo-text">{useTranslate("home-date")}</div>
+          <div className="welcome-container">
+            <div className="welcome">
+              <div>{useTranslate("welcome-1")}</div>
+              <div>{useTranslate("welcome-2")}</div>
+            </div>
           </div>
-          <div style={{ paddingTop: "1400px" }}>TETS</div>
         </div>
+        <Schedule />
       </div>
     </HomepageStyles>
   );
