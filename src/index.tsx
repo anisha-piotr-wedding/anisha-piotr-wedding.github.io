@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "./App/App";
 import "./index.css";
 import "./i18n";
 import * as serviceWorker from "./serviceWorker";

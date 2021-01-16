@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IconButton, MenuItem, Menu, Tooltip } from "@material-ui/core";
 import LanguageIcon from "@material-ui/icons/Language";
 import { useTranslation } from "react-i18next";
-import i18n from "./i18n";
+import i18n from "../../i18n";
 
 const getLanguages = () => ({
   en: "English",

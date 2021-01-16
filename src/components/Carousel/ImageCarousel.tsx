@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import styled from "styled-components/macro";
-import { BREAKPOINT_DESKTOP } from "./constants";
+import { BREAKPOINT_DESKTOP } from "../../constants";
 
 const CarouselStyles = styled.div`
   img {
@@ -43,7 +43,7 @@ export default () => {
 
   return (
     <CarouselStyles>
-      <Carousel indicators={false} animation="fade" interval={5000}>
+      <Carousel indicators={false} animation="fade" interval={10000}>
         {images.map(({ imgPath, title }) => (
           <img src={imgPath} title={title} alt={title} />
         ))}

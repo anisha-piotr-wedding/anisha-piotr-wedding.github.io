@@ -1,15 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components/macro";
-import CountdownTimer from "./CountdownTimer";
-import ImageCarousel from "./ImageCarousel";
+import CountdownTimer from "./components/Carousel/CountdownTimer";
+import ImageCarousel from "./components/Carousel/ImageCarousel";
+import MenuBar from "./components/MenuBar/MenuBar";
 import { BREAKPOINT_DESKTOP } from "./constants";
-import { AppBar, IconButton, Toolbar } from "@material-ui/core";
-import LanguageSelector from "./LanguageSelector";
-import MenuIcon from "@material-ui/icons/Menu";
-import LeftDrawer from "./LeftDrawer";
-
-// Days together
-// countown
 
 const LOGO_WIDTH = 32;
 const LEFT_PERCENT = 60;
@@ -22,6 +16,11 @@ const HomepageStyles = styled.div`
     height: 100%;
     left: 0px;
     top: 0px;
+
+    .container {
+      position: relative;
+      text-align: center;
+    }
   }
 
   #right {
@@ -76,36 +75,16 @@ const HomepageStyles = styled.div`
 `;
 
 export default () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
   return (
     <HomepageStyles>
       <div id="left">
-        <ImageCarousel />
+        <div className="containter">
+          <ImageCarousel />
+          <CountdownTimer />
+        </div>
       </div>
       <div id="right">
-        <AppBar
-          id="appBar"
-          position="sticky"
-          style={{ background: "transparent", boxShadow: "none" }}
-        >
-          <Toolbar>
-            <IconButton
-              id="menu"
-              edge="start"
-              color="inherit"
-              aria-label="Menu"
-              onClick={() => {
-                setIsDrawerOpen(true);
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <LeftDrawer open={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
-            <div id="spacer" />
-            <LanguageSelector />
-          </Toolbar>
-        </AppBar>
+        <MenuBar />
         <div className="logo">
           <img id="logo" src="img/logo.png" title="logo" alt="logo" />
           <img
@@ -117,7 +96,6 @@ export default () => {
           <div className="logo-text">
             Saturday May 8th, 2021 • 2 O'Clock in the Afternoon
           </div>
-          <CountdownTimer />
           <div style={{ paddingTop: "1400px" }}>TETS</div>
         </div>
       </div>
