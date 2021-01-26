@@ -45,7 +45,7 @@ export default () => {
     <CarouselStyles>
       <Carousel indicators={false} animation="fade" interval={10000}>
         {images.map(({ imgPath, title }) => (
-          <img src={imgPath} title={title} alt={title} />
+          <img key="title" src={imgPath} title={title} alt={title} />
         ))}
       </Carousel>
     </CarouselStyles>

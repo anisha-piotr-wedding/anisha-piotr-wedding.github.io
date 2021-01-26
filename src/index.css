@@ -14,7 +14,12 @@ code {
 
 @font-face {
   font-family: GlacialIndifference;
-  src: url("/GlacialIndifference-Regular.otf");
+  src: url("/fonts/GlacialIndifference-Regular.otf");
+}
+
+@font-face {
+  font-family: BrightSunshine;
+  src: url("/fonts/bright-sunshine/Bright Sunshine Demo.ttf");
 }
 
 html {
