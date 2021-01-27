@@ -4,6 +4,9 @@ import CountdownTimer from "./components/Carousel/CountdownTimer";
 import ImageCarousel from "./components/Carousel/ImageCarousel";
 import MenuBar from "./components/MenuBar/MenuBar";
 import Schedule from "./components/Schedule";
+import Livestream from "./components/Livestream";
+import QandA from "./components/QandA";
+import Contact from "./components/Contact";
 import { BREAKPOINT_DESKTOP, lighterPink } from "./constants";
 import { useTranslate } from "./utils";
 
@@ -129,6 +132,9 @@ export default () => {
           </div>
         </div>
         <Schedule />
+        <Livestream />
+        <QandA />
+        <Contact />
       </div>
     </HomepageStyles>
   );

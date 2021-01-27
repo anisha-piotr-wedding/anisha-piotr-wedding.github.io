@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { camelCase } from "lodash";
 import { SwipeableDrawer } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { lightPink } from "../../constants";
+import { useTranslation } from "react-i18next";
 
 const DRAWER_WIDTH = 200;
 
@@ -46,7 +46,7 @@ export default ({
   const closeDrawer = () => setIsDrawerOpen(false);
   const openDrawer = () => setIsDrawerOpen(true);
 
-  const menuItemsList = ["Schedule", "Livestream", "COVID-19", "Contact Us"];
+  const menuItemsList = ["schedule", "livestream", "qAndA", "contact"];
   return (
     <SwipeableDrawer
       anchor="right"
@@ -60,8 +60,8 @@ export default ({
           <img src="img/logo_small.png" title="logo-small" alt="logo-small" />
         </a>
         {menuItemsList.map((item) => (
-          <a href={`#${camelCase(item)}`} className="menuItem" key="item">
-            {item}
+          <a href={`#${item}`} className="menuItem" key="item">
+            {useTranslation(item)}
           </a>
         ))}
       </LeftDrawerStyles>
