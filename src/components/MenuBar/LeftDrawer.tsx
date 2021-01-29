@@ -2,7 +2,8 @@ import React, { Dispatch, SetStateAction } from "react";
 import { SwipeableDrawer } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { lightPink } from "../../constants";
-import { useTranslation } from "react-i18next";
+import { Link } from "react-scroll";
+import { useTranslate } from "../../utils";
 
 const DRAWER_WIDTH = 200;
 
@@ -20,6 +21,7 @@ const LeftDrawerStyles = styled.div`
     img {
       width: 35%;
       padding-bottom: 2em;
+      cursor: pointer;
     }
   }
 
@@ -29,6 +31,7 @@ const LeftDrawerStyles = styled.div`
     font-size: 18px;
     padding-bottom: 0.5em;
     text-transform: uppercase;
+    cursor: pointer;
 
     :hover {
       background-color: ${lightPink} !important;
@@ -56,14 +59,25 @@ export default ({
       className="drawer"
     >
       <LeftDrawerStyles>
-        <a href="/" id="logo-home">
+        <Link
+          to="home"
+          smooth={true}
+          id="logo-home"
+          duration={100}
+          onClick={closeDrawer}
+        >
           <img src="img/logo_small.png" title="logo-small" alt="logo-small" />
-        </a>
-        {menuItemsList.map((item) => (
-          <a href={`#${item}`} className="menuItem" key="item">
-            {useTranslation(item)}
-          </a>
-        ))}
+        </Link>
+        {menuItemsList.map((item) => {
+          const menuTitle = useTranslate(item);
+          return (
+            <div key={item} className="menuItem">
+              <Link to={item} smooth={true} onClick={closeDrawer}>
+                {menuTitle}
+              </Link>
+            </div>
+          );
+        })}
       </LeftDrawerStyles>
     </SwipeableDrawer>
   );

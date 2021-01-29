@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { lighterPink, red } from "../constants";
+import { BREAKPOINT_MOBILE, lighterPink, red } from "../constants";
 import { useTranslate } from "../utils";
 
 const QandAStyles = styled.div`
-  /* height: 100vh; */
   background-color: ${lighterPink};
   font-size: 20px;
 
@@ -40,11 +39,14 @@ const QandAStyles = styled.div`
   a {
     color: ${red};
   }
+
+  @media (max-width: ${BREAKPOINT_MOBILE}px) {
+  }
 `;
 
 export default () => {
   return (
-    <QandAStyles>
+    <QandAStyles id="qAndA">
       <div className="content">
         <div className="title">{useTranslate("qAndA")}</div>
         {[...Array(4).keys()].map((index) => (

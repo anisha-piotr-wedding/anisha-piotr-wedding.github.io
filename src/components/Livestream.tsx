@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { useTranslate } from "../utils";
 
-const QandAStyles = styled.div`
+const LivestreamStyles = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,9 +26,9 @@ const QandAStyles = styled.div`
 
 export default () => {
   return (
-    <QandAStyles>
+    <LivestreamStyles id="livestream">
       <div className="title">{useTranslate("livestream")}</div>
       <div className="content">{useTranslate("livestream-1")}</div>
-    </QandAStyles>
+    </LivestreamStyles>
   );
 };

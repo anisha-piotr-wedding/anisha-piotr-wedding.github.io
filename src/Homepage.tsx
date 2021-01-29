@@ -7,7 +7,7 @@ import Schedule from "./components/Schedule";
 import Livestream from "./components/Livestream";
 import QandA from "./components/QandA";
 import Contact from "./components/Contact";
-import { BREAKPOINT_DESKTOP, lighterPink } from "./constants";
+import { BREAKPOINT_MOBILE, lighterPink } from "./constants";
 import { useTranslate } from "./utils";
 
 const LOGO_WIDTH = 32;
@@ -61,12 +61,6 @@ const HomepageStyles = styled.div`
       }
     }
 
-    hr {
-      border-top: 1px solid grey;
-      width: 75%;
-      margin-top: 3em;
-    }
-
     .welcome-container {
       padding: 2em;
       background-color: ${lighterPink};
@@ -83,7 +77,7 @@ const HomepageStyles = styled.div`
     }
   }
 
-  @media (max-width: ${BREAKPOINT_DESKTOP}px) {
+  @media (max-width: ${BREAKPOINT_MOBILE}px) {
     display: flex;
     flex-direction: column;
 
@@ -96,9 +90,29 @@ const HomepageStyles = styled.div`
     #right {
       width: ${LEFT_PERCENT_SMALL}%;
       padding-left: 0%;
+      margin-top: 40px;
 
       .logo {
-        padding: 2em 0;
+        padding: 0em 0;
+
+        img {
+          margin: 1.5em 0 0;
+          width: 90%;
+        }
+
+        #logo-words {
+          width: 55%;
+        }
+
+        .logo-text {
+          padding: 2em;
+          text-align: center;
+        }
+      }
+
+      .welcome-container {
+        padding: 1em;
+        width: 80%;
       }
     }
   }
@@ -106,9 +120,9 @@ const HomepageStyles = styled.div`
 
 export default () => {
   return (
-    <HomepageStyles>
+    <HomepageStyles id="home">
       <div id="left">
-        <div className="containter">
+        <div className="container">
           <ImageCarousel />
           <CountdownTimer />
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import styled from "styled-components/macro";
-import { BREAKPOINT_DESKTOP } from "../../constants";
+import { BREAKPOINT_MOBILE } from "../../constants";
 
 const CarouselStyles = styled.div`
   img {
@@ -10,7 +10,7 @@ const CarouselStyles = styled.div`
     object-fit: cover;
   }
 
-  @media (max-width: ${BREAKPOINT_DESKTOP}px) {
+  @media (max-width: ${BREAKPOINT_MOBILE}px) {
     img {
       height: auto;
     }

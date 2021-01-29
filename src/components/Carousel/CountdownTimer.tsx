@@ -1,6 +1,7 @@
 import React from "react";
 import Countdown from "react-countdown";
 import styled from "styled-components/macro";
+import { BREAKPOINT_MOBILE } from "../../constants";
 
 const CountdownStyles = styled.div`
   #countdown {
@@ -23,6 +24,21 @@ const CountdownStyles = styled.div`
 
       .time {
         font-size: 32px;
+      }
+    }
+  }
+
+  @media (max-width: ${BREAKPOINT_MOBILE}px) {
+    #countdown {
+      top: 100%;
+      width: 100%;
+      padding: 15px 0;
+      height: 50px;
+
+      .text {
+        .time {
+          font-size: 24px;
+        }
       }
     }
   }
