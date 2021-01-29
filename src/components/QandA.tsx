@@ -49,7 +49,7 @@ export default () => {
     <QandAStyles id="qAndA">
       <div className="content">
         <div className="title">{useTranslate("qAndA")}</div>
-        {[...Array(4).keys()].map((index) => (
+        {[...Array(5).keys()].map((index) => (
           <div className="qAndA" key={index}>
             <div className="question">
               <div className="header">{useTranslate("q")}</div>

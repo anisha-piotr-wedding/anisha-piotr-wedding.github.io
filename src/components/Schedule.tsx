@@ -13,7 +13,7 @@ const ScheduleStyles = styled.div`
   height: 100vh;
 
   .content {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     padding: 5em 0;
   }
@@ -55,12 +55,12 @@ const ScheduleStyles = styled.div`
 
   .capacity {
     align-items: flex-start !important;
-    padding-bottom: 3em;
+    padding-bottom: 2em;
   }
 
   #ring {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     overflow: hidden;
     object-fit: cover;
     border-radius: 50%;
@@ -103,18 +103,6 @@ const ScheduleStyles = styled.div`
     }
 
     #ring {
-      /* width: 250px;
-      height: 250px;
-      overflow: hidden;
-      object-fit: cover;
-      border-radius: 50%;
-      margin: 0em auto;
-
-      img {
-        height: auto;
-        width: 100%;
-        margin-top: -30px;
-      } */
       display: none;
     }
   }
