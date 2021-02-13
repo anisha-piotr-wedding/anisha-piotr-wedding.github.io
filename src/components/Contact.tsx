@@ -4,40 +4,55 @@ import { BREAKPOINT_MOBILE, red } from "../constants";
 import { useTranslate } from "../utils";
 
 const ContactStyles = styled.div`
+  background-image: url("img/contactImg3.jpg");
+  background-size: cover;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
-  height: 100vh;
-  width: 80%;
+  justify-content: center;
+  .content-container {
+    margin: 0 auto;
+    width: 80%;
 
-  .title {
-    padding: 4em 0 0;
-    font-size: 56px;
-    text-align: center;
-    font-family: BrightSunshine;
-  }
+    .content {
+      background-color: rgb(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 2em;
+      .title {
+        font-size: 56px;
+        text-align: center;
+        font-family: BrightSunshine;
+      }
 
-  .content {
-    padding: 1em;
-    text-align: center;
-    font-size: 24px;
-  }
+      .content-text {
+        padding: 1em;
+        text-align: center;
+        font-size: 24px;
+      }
+    }
 
-  a {
-    color: ${red};
+    a {
+      color: ${red};
+    }
   }
 
   @media (max-width: ${BREAKPOINT_MOBILE}px) {
-    padding: 2em 0 0;
+    .content-container {
+      padding: 2em 0 0;
+    }
   }
 `;
 
 export default () => {
   return (
     <ContactStyles id="contact">
-      <div className="title">{useTranslate("contact")}</div>
-      <div className="content">{useTranslate("contact-1")}</div>
+      <div className="content-container">
+        <div className="content">
+          <div className="title">{useTranslate("contact")}</div>
+          <div className="content-text">{useTranslate("contact-1")}</div>
+        </div>
+      </div>
     </ContactStyles>
   );
 };

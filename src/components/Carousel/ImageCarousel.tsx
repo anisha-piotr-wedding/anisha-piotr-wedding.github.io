@@ -3,7 +3,9 @@ import Carousel from "react-material-ui-carousel";
 import styled from "styled-components/macro";
 import { BREAKPOINT_MOBILE } from "../../constants";
 
-const CarouselStyles = styled.div`
+const CarouselStyles = styled.div<{ shiftLeft: number }>`
+  margin-left: ${(props) => (props.shiftLeft < 0 ? 0 : -props.shiftLeft)}px;
+  margin-right: ${(props) => (props.shiftLeft > 0 ? 0 : props.shiftLeft)}px;
   img {
     width: 100%;
     height: 100vh;
@@ -39,15 +41,37 @@ export default () => {
       title: "test",
       subTitle: "subTest",
     },
+    {
+      imgPath: "img/carousel/hobbit.jpg",
+      title: "test",
+      subTitle: "subTest",
+    },
+    {
+      imgPath: "img/carousel/landscape.jpg",
+      title: "test",
+      subTitle: "subTest",
+      shiftLeft: 500,
+    },
+    {
+      imgPath: "img/carousel/derp.jpg",
+      title: "test",
+      subTitle: "subTest",
+    },
+    {
+      imgPath: "img/carousel/ringLandscape.jpg",
+      title: "test",
+      subTitle: "subTest",
+      shiftLeft: 180,
+    },
   ];
 
   return (
-    <CarouselStyles>
-      <Carousel indicators={false} animation="fade" interval={10000}>
-        {images.map(({ imgPath, title }) => (
-          <img key="title" src={imgPath} title={title} alt={title} />
-        ))}
-      </Carousel>
-    </CarouselStyles>
+    <Carousel indicators={false} animation="fade" interval={10000}>
+      {images.map(({ imgPath, title, shiftLeft }) => (
+        <CarouselStyles key={title} shiftLeft={shiftLeft ? shiftLeft : 0}>
+          <img src={imgPath} title={title} alt={title} />
+        </CarouselStyles>
+      ))}
+    </Carousel>
   );
 };
