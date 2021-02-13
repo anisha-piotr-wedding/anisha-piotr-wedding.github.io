@@ -24,6 +24,11 @@ code {
   src: url("/fonts/bright-sunshine/Bright Sunshine Demo.ttf");
 }
 
+@font-face {
+  font-family: GujaratiFont;
+  src: url("/fonts/gujarat/Rasa-Regular.ttf");
+}
+
 html {
   scroll-behavior: smooth;
 }

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconButton, MenuItem, Menu, Tooltip } from "@material-ui/core";
 import LanguageIcon from "@material-ui/icons/Language";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18n";
+import { useHistory, useLocation } from "react-router-dom";
 
 const getLanguages = () => ({
   en: "English",
@@ -20,12 +21,13 @@ export const getCurrentLanguage = () => {
 const LanguageSelector = () => {
   const LANGUAGES = getLanguages();
   const { i18n } = useTranslation();
+  const location = useLocation();
+  const history = useHistory();
 
-  const [lang, setLang] = useState(
-    Object.keys(LANGUAGES).includes(i18n.language)
-      ? i18n.language
-      : i18n.languages[1]
-  );
+  const isPolish =
+    location.pathname === "/pl" || location.pathname === "polski";
+
+  const [, setLang] = useState(!isPolish ? i18n.language : i18n.languages[1]);
 
   /* Used to set position of Material UI Menu */
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -38,12 +40,33 @@ const LanguageSelector = () => {
     await i18n.changeLanguage(id);
 
     setLang(id);
+    history.push(id === "en" ? "" : id);
     setAnchorEl(null);
   }
 
   function handleClose() {
     setAnchorEl(null);
   }
+
+  useEffect(() => {
+    let id = "en";
+    if (isPolish) {
+      id = "pl";
+    } else {
+      history.push("/");
+    }
+    i18n.changeLanguage(id);
+    setAnchorEl(null);
+
+    return () => {
+      i18n.changeLanguage("en");
+      setLang("en");
+      setAnchorEl(null);
+    };
+  }, [isPolish, history, i18n]);
+
+  const isSelected = (id: string) =>
+    id === "en" ? location.pathname === "/" : `/${id}` === location.pathname;
 
   return (
     <>
@@ -77,7 +100,7 @@ const LanguageSelector = () => {
           <MenuItem
             key={id}
             value={id}
-            selected={id === lang}
+            selected={isSelected(id)}
             onClick={async () => await handleMenuItemClick(id)}
           >
             {name}
