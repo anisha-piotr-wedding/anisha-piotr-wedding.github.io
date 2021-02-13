@@ -39,7 +39,14 @@ const ContactStyles = styled.div`
 
   @media (max-width: ${BREAKPOINT_MOBILE}px) {
     .content-container {
-      padding: 2em 0 0;
+      width: 85%;
+      .content {
+        padding: 1em 0.5em;
+
+        .content-text {
+          font-size: 18px;
+        }
+      }
     }
   }
 `;
