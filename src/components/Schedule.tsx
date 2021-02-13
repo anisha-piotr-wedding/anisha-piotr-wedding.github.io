@@ -6,8 +6,9 @@ import EventIcon from "@material-ui/icons/Event";
 import ScheduleIcon from "@material-ui/icons/Schedule";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
+import { getIsWindows } from "../utils";
 
-const ScheduleStyles = styled.div`
+const ScheduleStyles = styled.div<{ isWindows: boolean }>`
   background-color: ${lighterPink};
   font-size: 18px;
   height: 100vh;
@@ -15,7 +16,7 @@ const ScheduleStyles = styled.div`
   .content {
     width: 85%;
     margin: 0 auto;
-    padding: 5em 0;
+    padding: ${(props) => (props.isWindows ? 4 : 5)}em 0;
   }
 
   .title {
@@ -55,12 +56,12 @@ const ScheduleStyles = styled.div`
 
   .capacity {
     align-items: flex-start !important;
-    padding-bottom: 2em;
+    padding-bottom: ${(props) => (props.isWindows ? 1 : 2)}em;
   }
 
   #ring {
-    width: 200px;
-    height: 200px;
+    width: ${(props) => (props.isWindows ? 180 : 200)}px;
+    height: ${(props) => (props.isWindows ? 180 : 200)}px;
     overflow: hidden;
     object-fit: cover;
     border-radius: 50%;
@@ -109,8 +110,9 @@ const ScheduleStyles = styled.div`
 `;
 
 export default () => {
+  const isWindows = getIsWindows();
   return (
-    <ScheduleStyles id="schedule">
+    <ScheduleStyles id="schedule" isWindows={isWindows}>
       <div className="content">
         <div className="title">{useTranslate("schedule")}</div>
         {[
