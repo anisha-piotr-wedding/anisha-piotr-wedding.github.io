@@ -115,6 +115,10 @@ const HomepageStyles = styled.div<{ isGujarati: boolean }>`
       .welcome-container {
         padding: 1em;
         width: 80%;
+
+        .welcome {
+          font-size: ${(props) => (props.isGujarati ? 20 : 18)}px;
+        }
       }
     }
   }

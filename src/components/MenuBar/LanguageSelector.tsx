@@ -28,17 +28,8 @@ const LanguageSelector = () => {
   const isPolish = location.pathname === "/pl";
   const isGujarati = location.pathname === "/guj";
 
-  console.log(
-    "🌟🚨 ~ file: LanguageSelector.tsx ~ line 120 ~ LanguageSelector ~ i18n.languages",
-    i18n.languages
-  );
-
   const [, setLang] = useState(
-    isPolish
-      ? i18n.languages[1]
-      : isGujarati
-      ? i18n.languages[2]
-      : i18n.language
+    isPolish || isGujarati ? i18n.languages[1] : i18n.language
   );
 
   /* Used to set position of Material UI Menu */
