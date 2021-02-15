@@ -70,6 +70,8 @@ const HomepageStyles = styled.div<{ isGujarati: boolean }>`
     }
 
     .welcome {
+      font-family: ${(props) =>
+        props.isGujarati ? "GujaratiFont" : "GlacialIndifference"};
       display: grid;
       grid-template-rows: repeat(2, auto);
       grid-row-gap: 2em;
@@ -124,9 +126,9 @@ const HomepageStyles = styled.div<{ isGujarati: boolean }>`
   }
 `;
 
-export default () => {
+export default ({ language }: { language: string }) => {
   const location = useLocation();
-  const isGujarati = location.pathname === "/guj";
+  const isGujarati = location.pathname === "/guj" || language === "guj";
 
   return (
     <HomepageStyles id="home" isGujarati={isGujarati}>
@@ -137,7 +139,7 @@ export default () => {
         </div>
       </div>
       <div id="right">
-        <MenuBar />
+        <MenuBar language={language} />
         <div className="logo">
           <img id="logo" src="img/logo.png" title="logo" alt="logo" />
           <img

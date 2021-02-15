@@ -13,7 +13,7 @@ const MenuBarStyles = styled(AppBar)`
   }
 `;
 
-export default () => {
+export default ({ language }: { language: string }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
     <MenuBarStyles
@@ -36,7 +36,7 @@ export default () => {
         <LeftDrawer open={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
         <div id="spacer" />
         {/* <img id="logo" src="img/logo.png" title="logo" alt="logo" /> */}
-        <LanguageSelector />
+        <LanguageSelector language={language} />
       </Toolbar>
     </MenuBarStyles>
   );

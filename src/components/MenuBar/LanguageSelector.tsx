@@ -19,14 +19,14 @@ export const getCurrentLanguage = () => {
   );
 };
 
-const LanguageSelector = () => {
+const LanguageSelector = ({ language }: { language: string }) => {
   const LANGUAGES = getLanguages();
   const { i18n } = useTranslation();
   const location = useLocation();
   const history = useHistory();
 
-  const isPolish = location.pathname === "/pl";
-  const isGujarati = location.pathname === "/guj";
+  const isPolish = location.pathname === "/pl" || language === "pl";
+  const isGujarati = location.pathname === "/guj" || language === "guj";
 
   const [, setLang] = useState(
     isPolish || isGujarati ? i18n.languages[1] : i18n.language
@@ -53,8 +53,8 @@ const LanguageSelector = () => {
 
   useEffect(() => {
     let id = "en";
-    if (isPolish) {
-      id = "pl";
+    if (isPolish || isGujarati) {
+      id = language;
     } else {
       history.push("/");
     }
@@ -66,7 +66,7 @@ const LanguageSelector = () => {
       setLang("en");
       setAnchorEl(null);
     };
-  }, [isPolish, history, i18n]);
+  }, [isPolish, isGujarati, language, history, i18n]);
 
   const isSelected = (id: string) =>
     id === "en" ? location.pathname === "/" : `/${id}` === location.pathname;

@@ -8,8 +8,16 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact={true} path="/" component={Homepage} />
-        <Route exact={true} path="/pl" component={Homepage} />
-        <Route exact={true} path="/guj" component={Homepage} />
+        <Route
+          exact={true}
+          path="/pl"
+          component={() => <Homepage language="pl" />}
+        />
+        <Route
+          exact={true}
+          path="/guj"
+          component={() => <Homepage language="guj" />}
+        />
       </Switch>
     </BrowserRouter>
   );
