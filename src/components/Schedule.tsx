@@ -10,26 +10,26 @@ import { getIsWindows } from "../utils";
 
 const ScheduleStyles = styled.div<{ isWindows: boolean }>`
   background-color: ${lighterPink};
-  font-size: 18px;
+  font-size: ${(props) => (props.isWindows ? 15 : 18)}px;
   height: 100vh;
 
   .content {
-    width: 85%;
+    width: ${(props) => (props.isWindows ? 93 : 85)}%;
     margin: 0 auto;
-    padding: ${(props) => (props.isWindows ? 4 : 5)}em 0;
+    padding: ${(props) => (props.isWindows ? 2 : 5)}em 0;
   }
 
   .title {
-    font-size: 56px;
+    font-size: ${(props) => (props.isWindows ? 50 : 56)}px;
     text-align: center;
     font-family: BrightSunshine;
   }
 
   .row {
     display: grid;
-    grid-template-columns: 10em auto;
-    grid-column-gap: 1em;
-    padding-bottom: 1em;
+    grid-template-columns: ${(props) => (props.isWindows ? 9 : 10)}em auto;
+    grid-column-gap: ${(props) => (props.isWindows ? "10px" : "1em")};
+    padding-bottom: ${(props) => (props.isWindows ? "10px" : "1em")};
     align-items: center;
 
     .headerIcon {
@@ -45,8 +45,8 @@ const ScheduleStyles = styled.div<{ isWindows: boolean }>`
       align-items: center;
       border-radius: 50%;
       border: 2px solid black;
-      width: 50px;
-      height: 50px;
+      width: ${(props) => (props.isWindows ? 35 : 50)}px;
+      height: ${(props) => (props.isWindows ? 35 : 50)}px;
     }
 
     .header {
@@ -60,8 +60,8 @@ const ScheduleStyles = styled.div<{ isWindows: boolean }>`
   }
 
   #ring {
-    width: ${(props) => (props.isWindows ? 180 : 200)}px;
-    height: ${(props) => (props.isWindows ? 180 : 200)}px;
+    width: ${(props) => (props.isWindows ? 100 : 200)}px;
+    height: ${(props) => (props.isWindows ? 100 : 200)}px;
     overflow: hidden;
     object-fit: cover;
     border-radius: 50%;

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { BREAKPOINT_MOBILE, lighterPink, red } from "../constants";
-import { useTranslate } from "../utils";
+import { getIsWindows, useTranslate } from "../utils";
 
-const QandAStyles = styled.div`
+const QandAStyles = styled.div<{ isWindows: boolean }>`
   background-color: ${lighterPink};
-  font-size: 20px;
+  font-size: ${(props) => (props.isWindows ? 16 : 20)}px;
 
   .content {
     width: 80%;
@@ -45,8 +45,9 @@ const QandAStyles = styled.div`
 `;
 
 export default () => {
+  const isWindows = getIsWindows();
   return (
-    <QandAStyles id="qAndA">
+    <QandAStyles id="qAndA" isWindows={isWindows}>
       <div className="content">
         <div className="title">{useTranslate("qAndA")}</div>
         {[...Array(5).keys()].map((index) => (

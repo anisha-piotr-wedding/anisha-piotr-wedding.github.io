@@ -8,14 +8,15 @@ import Livestream from "./components/Livestream";
 import QandA from "./components/QandA";
 import Contact from "./components/Contact";
 import { BREAKPOINT_MOBILE, lighterPink } from "./constants";
-import { useTranslate } from "./utils";
+import { getIsWindows, useTranslate } from "./utils";
 import { useLocation } from "react-router";
 
 const LOGO_WIDTH = 32;
+const WINDOWS_LOGO_WIDTH = 25;
 const LEFT_PERCENT = 60;
 const LEFT_PERCENT_SMALL = 100;
 
-const HomepageStyles = styled.div<{ isGujarati: boolean }>`
+const HomepageStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
   #left {
     position: fixed;
     width: ${LEFT_PERCENT}%;
@@ -46,19 +47,21 @@ const HomepageStyles = styled.div<{ isGujarati: boolean }>`
 
       img {
         margin: 5em 0 0;
-        width: ${LOGO_WIDTH}rem;
+        width: ${(props) =>
+          props.isWindows ? WINDOWS_LOGO_WIDTH : LOGO_WIDTH}rem;
       }
 
       #logo-words {
         margin: 0;
-        width: ${LOGO_WIDTH / 2}rem;
+        width: ${(props) =>
+          props.isWindows ? WINDOWS_LOGO_WIDTH / 2 : LOGO_WIDTH / 2}rem;
         padding-top: 1em;
       }
 
       .logo-text {
         text-transform: uppercase;
         padding: 1em 0 2em;
-        font-size: 18px;
+        font-size: ${(props) => (props.isWindows ? 16 : 18)}px;
       }
     }
 
@@ -76,7 +79,14 @@ const HomepageStyles = styled.div<{ isGujarati: boolean }>`
       grid-template-rows: repeat(2, auto);
       grid-row-gap: 2em;
       text-align: center;
-      font-size: ${(props) => (props.isGujarati ? 28 : 18)}px;
+      font-size: ${(props) =>
+        props.isGujarati && props.isWindows
+          ? 26
+          : props.isGujarati
+          ? 28
+          : props.isWindows
+          ? 16
+          : 18}px;
       font-weight: ${(props) => (props.isGujarati ? 200 : 400)}px;
     }
   }
@@ -128,10 +138,11 @@ const HomepageStyles = styled.div<{ isGujarati: boolean }>`
 
 export default ({ language }: { language: string }) => {
   const location = useLocation();
+  const isWindows = getIsWindows();
   const isGujarati = location.pathname === "/guj" || language === "guj";
 
   return (
-    <HomepageStyles id="home" isGujarati={isGujarati}>
+    <HomepageStyles id="home" isWindows={isWindows} isGujarati={isGujarati}>
       <div id="left">
         <div className="container">
           <ImageCarousel />
