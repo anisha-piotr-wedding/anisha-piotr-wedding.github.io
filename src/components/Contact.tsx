@@ -41,7 +41,7 @@ const ContactStyles = styled.div`
     .content-container {
       width: 85%;
       .content {
-        padding: 1em 0.5em;
+        padding: 1em 0.5emlocal;
 
         .content-text {
           font-size: 18px;

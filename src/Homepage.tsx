@@ -9,12 +9,13 @@ import QandA from "./components/QandA";
 import Contact from "./components/Contact";
 import { BREAKPOINT_MOBILE, lighterPink } from "./constants";
 import { useTranslate } from "./utils";
+import { useLocation } from "react-router";
 
 const LOGO_WIDTH = 32;
 const LEFT_PERCENT = 60;
 const LEFT_PERCENT_SMALL = 100;
 
-const HomepageStyles = styled.div`
+const HomepageStyles = styled.div<{ isGujarati: boolean }>`
   #left {
     position: fixed;
     width: ${LEFT_PERCENT}%;
@@ -73,7 +74,8 @@ const HomepageStyles = styled.div`
       grid-template-rows: repeat(2, auto);
       grid-row-gap: 2em;
       text-align: center;
-      font-size: 18px;
+      font-size: ${(props) => (props.isGujarati ? 28 : 18)}px;
+      font-weight: ${(props) => (props.isGujarati ? 200 : 400)}px;
     }
   }
 
@@ -119,8 +121,11 @@ const HomepageStyles = styled.div`
 `;
 
 export default () => {
+  const location = useLocation();
+  const isGujarati = location.pathname === "/guj";
+
   return (
-    <HomepageStyles id="home">
+    <HomepageStyles id="home" isGujarati={isGujarati}>
       <div id="left">
         <div className="container">
           <ImageCarousel />
