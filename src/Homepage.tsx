@@ -46,7 +46,7 @@ const HomepageStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
       height: 100vh;
 
       img {
-        margin: 5em 0 0;
+        margin: ${(props) => (props.isWindows ? 0 : 5)}em 0 0;
         width: ${(props) =>
           props.isWindows ? WINDOWS_LOGO_WIDTH : LOGO_WIDTH}rem;
       }
@@ -80,13 +80,7 @@ const HomepageStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
       grid-row-gap: 2em;
       text-align: center;
       font-size: ${(props) =>
-        props.isGujarati && props.isWindows
-          ? 26
-          : props.isGujarati
-          ? 28
-          : props.isWindows
-          ? 16
-          : 18}px;
+        props.isWindows ? 16 : props.isGujarati ? 28 : 18}px;
       font-weight: ${(props) => (props.isGujarati ? 200 : 400)}px;
     }
   }
