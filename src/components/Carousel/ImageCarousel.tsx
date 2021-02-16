@@ -67,6 +67,17 @@ export default () => {
       subTitle: "subTest",
       shiftLeft: 180,
     },
+    {
+      imgPath: "img/carousel/train.jpg",
+      title: "test",
+      subTitle: "subTest",
+      shiftLeft: -200,
+    },
+    {
+      imgPath: "img/carousel/snow_scene.jpg",
+      title: "test",
+      subTitle: "subTest",
+    },
   ];
 
   return (
