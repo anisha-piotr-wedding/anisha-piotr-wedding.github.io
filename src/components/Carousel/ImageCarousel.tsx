@@ -13,8 +13,12 @@ const CarouselStyles = styled.div<{ shiftLeft: number }>`
   }
 
   @media (max-width: ${BREAKPOINT_MOBILE}px) {
+    margin-left: ${(props) =>
+      props.shiftLeft < 0 ? 0 : -props.shiftLeft / 2}px;
+    margin-right: ${(props) =>
+      props.shiftLeft > 0 ? 0 : props.shiftLeft / 2}px;
     img {
-      height: auto;
+      height: 42vh;
     }
   }
 `;

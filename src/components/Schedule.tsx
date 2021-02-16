@@ -75,10 +75,10 @@ const ScheduleStyles = styled.div<{ isWindows: boolean }>`
   }
 
   @media (max-width: ${BREAKPOINT_MOBILE}px) {
-    font-size: 16px;
+    font-size: 15px;
 
     .content {
-      width: 90%;
+      width: 95%;
       padding: 3em 0;
     }
 
@@ -88,10 +88,12 @@ const ScheduleStyles = styled.div<{ isWindows: boolean }>`
 
     .row {
       grid-template-columns: 8em auto;
+      grid-column-gap: 10px;
+      padding-bottom: 10px;
 
       .icon {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         .MuiSvgIcon-root {
           font-size: 1.3rem !important;
         }
