@@ -102,11 +102,12 @@ const ScheduleStyles = styled.div<{ isWindows: boolean }>`
 
     .capacity {
       align-items: flex-start !important;
-      padding-bottom: 3em;
+      padding-bottom: 1em;
     }
 
     #ring {
-      display: none;
+      width: 100px;
+      height: 100px;
     }
   }
 `;

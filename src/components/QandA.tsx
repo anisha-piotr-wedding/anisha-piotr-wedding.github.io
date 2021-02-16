@@ -19,6 +19,10 @@ const QandAStyles = styled.div<{ isWindows: boolean }>`
     font-family: BrightSunshine;
   }
 
+  .question {
+    padding-bottom: 1em;
+  }
+
   .question,
   .answer {
     display: grid;
