@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components/macro";
 import { BREAKPOINT_MOBILE, red } from "../constants";
 import { useTranslate } from "../utils";
+import Footer from "./Footer";
 
 const ContactStyles = styled.div`
   background-image: url("img/contactImg3.jpg");
   background-size: cover;
-  height: 100vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,13 +54,16 @@ const ContactStyles = styled.div`
 
 export default () => {
   return (
-    <ContactStyles id="contact">
-      <div className="content-container">
-        <div className="content">
-          <div className="title">{useTranslate("contact")}</div>
-          <div className="content-text">{useTranslate("contact-1")}</div>
+    <>
+      <ContactStyles id="contact">
+        <div className="content-container">
+          <div className="content">
+            <div className="title">{useTranslate("contact")}</div>
+            <div className="content-text">{useTranslate("contact-1")}</div>
+          </div>
         </div>
-      </div>
-    </ContactStyles>
+      </ContactStyles>
+      <Footer />
+    </>
   );
 };

@@ -45,8 +45,8 @@ const HomepageStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
       align-items: center;
       height: 100vh;
 
-      img {
-        margin: ${(props) => (props.isWindows ? 0 : 5)}em 0 0;
+      #logo {
+        margin: ${(props) => (props.isWindows ? 0 : 3)}em 0 0;
         width: ${(props) =>
           props.isWindows ? WINDOWS_LOGO_WIDTH : LOGO_WIDTH}rem;
       }
@@ -65,6 +65,11 @@ const HomepageStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
       }
     }
 
+    #Ganesh {
+      width: 120px;
+      justify-self: center;
+    }
+
     .welcome-container {
       padding: 2em;
       background-color: ${lighterPink};
@@ -77,7 +82,7 @@ const HomepageStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
         props.isGujarati ? "GujaratiFont" : "GlacialIndifference"};
       display: grid;
       grid-template-rows: repeat(2, auto);
-      grid-row-gap: 2em;
+      grid-row-gap: ${(props) => (props.isGujarati ? "10px" : "2em")};
       text-align: center;
       font-size: ${(props) =>
         props.isWindows ? 16 : props.isGujarati ? 28 : 18}px;
@@ -103,7 +108,7 @@ const HomepageStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
       .logo {
         padding: 0em 0;
 
-        img {
+        #logo {
           margin: 1.5em 0 0;
           width: 90%;
         }
@@ -156,6 +161,17 @@ export default ({ language }: { language: string }) => {
           <div className="logo-text">{useTranslate("home-date")}</div>
           <div className="welcome-container">
             <div className="welcome">
+              {isGujarati && (
+                // <a href="https://www.freevector.com/ganesha-icons-graphics">
+                //   FreeVector.com
+                // </a>
+                <img
+                  id="Ganesh"
+                  src="img/Ganesh_Icon.png"
+                  alt="Ganesh"
+                  title="Ganesh"
+                />
+              )}
               <div>{useTranslate("welcome-1")}</div>
               <div>{useTranslate("welcome-2")}</div>
             </div>
