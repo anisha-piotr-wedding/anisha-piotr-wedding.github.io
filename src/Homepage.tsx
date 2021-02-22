@@ -66,7 +66,7 @@ const HomepageStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
     }
 
     #Ganesh {
-      width: 120px;
+      width: 85px;
       justify-self: center;
     }
 
