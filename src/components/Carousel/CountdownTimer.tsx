@@ -44,7 +44,8 @@ const CountdownStyles = styled.div`
   }
 `;
 
-const WEDDING_TIME_MS = 1620496800000;
+const WEDDING_TIME_MS =
+  Date.now() < 1615705200000 ? 1620500400000 : 1620496800000;
 
 const renderer = ({
   days,
