@@ -22,14 +22,16 @@
   "q": "Q",
   "a": "A",
   "q1": "Are you having any other events? ",
-  "a1": "We will have more information closer to the date. We are hoping to have a small Mehndi Party the day before for the bride. We will not be having a reception at this time due to the current situation. ",
-  "q2": "I would love to send a gift, what is the best way to do so? ",
-  "a2": "While your love and support is the biggest gift to us and we do not expect or need any gifts, for those who would like to bless us with gifts we ask that you please reach out to the bride’s sister, Kshamina Ghelani through <a href='mailto:kshamina.ghelani@gmail.com'>email</a> to make arrangements. ",
-  "q3": "I would love to attend in person, is this possible?",
-  "a3": "We are so glad that you would like to celebrate with s in person! We will be following public health guidelines and with restrictions in constant flux, we are only able to invite a small number of people to join us in person at this time. If this changes, we will be sure to update our website and send out emails with more information. Please use the live stream to celebrate with us. ",
-  "q4":"Is there anything I should know about the livestream?",
-  "a4": "Once have the details sorted, we will be posting them here including the link, when to log on, approximately how long it will be for and more.",
+  "a1": "We will have more information closer to the date. We are hoping to have a small Mehndi Party the day before for the bride. Regardless of the restrictions, we have decided not to have a reception so please toast us from the pleasure of your own home!",
+  "q2": "How can I send a gift?",
+  "a2": "We are so thankful that you will be present to join us on our big day! That is more than enough, we do not expect anything more.",
+  "q3":"I would really really like to send a gift!",
+  "a3":"We really really are thankful, and your love and support are the biggest gift to us and we do not expect or need any gifts. For those who would still like to bless us with gifts we ask that you please reach out to the bride’s sister, Kshamina at <a href='mailto:kshamina.ghelani@gmail.com'>kshamina.ghelani@gmail.com</a> to make arrangements.",
+  "q4": "I would love to attend in person, is this possible?",
+  "a4": "The current health guidelines allow us to have only a limited number of guests joining us. A few weeks before, depending on restrictions, we will inform guests through email if we are able to invite them to attend in person. We hope to have as many loved ones there with us as we can as per all public health guidelines on the day of the wedding.",
+  "q5":"Is there anything I should know about the livestream?",
+  "a5": "Once have the details sorted, we will be posting them here including the link, when to log on, approximately how long it will be for and more.",
 
   "contact": "Contact Us",
-  "contact-1": "Have a question that isn’t answered here? Please email the bride and groom at <a href='mailto:piotrandanisha@gmail.com'>piotrandanisha@gmail.com</a> or email Kshamina Ghelani at <a href='mailto:kshamina.ghelani@gmail.com'>kshamina.ghelani@gmail.com</a>"
+  "contact-1": "Have a question that isn’t answered here? Please email the bride and groom at <a href='mailto:piotrandanisha@gmail.com'>piotrandanisha@gmail.com</a> or email <br>Kshamina Ghelani at <a href='mailto:kshamina.ghelani@gmail.com'>kshamina.ghelani@gmail.com</a>"
 }
