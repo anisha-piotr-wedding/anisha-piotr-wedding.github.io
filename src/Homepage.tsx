@@ -162,9 +162,6 @@ export default ({ language }: { language: string }) => {
           <div className="welcome-container">
             <div className="welcome">
               {isGujarati && (
-                // <a href="https://www.freevector.com/ganesha-icons-graphics">
-                //   FreeVector.com
-                // </a>
                 <img
                   id="Ganesh"
                   src="img/Ganesh_Icon.png"
