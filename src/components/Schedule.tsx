@@ -7,11 +7,15 @@ import ScheduleIcon from "@material-ui/icons/Schedule";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import { getIsWindows } from "../utils";
+import { useLocation } from "react-router";
+import { StyleType } from "../Homepage";
 
-const ScheduleStyles = styled.div<{ isWindows: boolean }>`
+const ScheduleStyles = styled.div<StyleType>`
   background-color: ${lighterPink};
   font-size: ${(props) => (props.isWindows ? 15 : 18)}px;
   height: 100vh;
+  font-family: ${(props) =>
+    props.isPolish ? "PolishFont" : "GlacialIndifference"};
 
   .content {
     width: ${(props) => (props.isWindows ? 93 : 85)}%;
@@ -112,10 +116,19 @@ const ScheduleStyles = styled.div<{ isWindows: boolean }>`
   }
 `;
 
-export default () => {
+export default ({ language }: { language: string }) => {
+  const location = useLocation();
   const isWindows = getIsWindows();
+  const isGujarati = location.pathname === "/guj" || language === "guj";
+  const isPolish = location.pathname === "/pl" || language === "pl";
+
   return (
-    <ScheduleStyles id="schedule" isWindows={isWindows}>
+    <ScheduleStyles
+      id="schedule"
+      isWindows={isWindows}
+      isGujarati={isGujarati}
+      isPolish={isPolish}
+    >
       <div className="content">
         <div className="title">{useTranslate("schedule")}</div>
         {[

@@ -3,13 +3,16 @@ import styled from "styled-components/macro";
 import { BREAKPOINT_MOBILE } from "../constants";
 import { getIsWindows } from "../utils";
 import { useLocation } from "react-router";
+import { StyleType } from "../Homepage";
 
-const FooterStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
+const FooterStyles = styled.div<StyleType>`
   background-color: black;
   color: white;
   font-size: 16px;
   padding: 0.5em 1em;
   height: 15vh;
+  font-family: ${(props) =>
+    props.isPolish ? "PolishFont" : "GlacialIndifference"};
 
   display: flex;
   flex-direction: column;
@@ -43,9 +46,15 @@ export default ({ language }: { language: string }) => {
   const location = useLocation();
   const isWindows = getIsWindows();
   const isGujarati = location.pathname === "/guj" || language === "guj";
+  const isPolish = location.pathname === "/pl" || language === "pl";
 
   return (
-    <FooterStyles id="footer" isWindows={isWindows} isGujarati={isGujarati}>
+    <FooterStyles
+      id="footer"
+      isWindows={isWindows}
+      isGujarati={isGujarati}
+      isPolish={isPolish}
+    >
       <div className="createdBy">
         <div>
           <img src="img/ksham-logo.png" alt="ksham-logo" />

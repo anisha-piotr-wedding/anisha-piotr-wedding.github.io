@@ -16,7 +16,13 @@ const WINDOWS_LOGO_WIDTH = 25;
 const LEFT_PERCENT = 60;
 const LEFT_PERCENT_SMALL = 100;
 
-const HomepageStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
+export type StyleType = {
+  isWindows: boolean;
+  isGujarati: boolean;
+  isPolish: boolean;
+};
+
+const HomepageStyles = styled.div<StyleType>`
   #left {
     position: fixed;
     width: ${LEFT_PERCENT}%;
@@ -79,7 +85,11 @@ const HomepageStyles = styled.div<{ isWindows: boolean; isGujarati: boolean }>`
 
     .welcome {
       font-family: ${(props) =>
-        props.isGujarati ? "GujaratiFont" : "GlacialIndifference"};
+        props.isGujarati
+          ? "GujaratiFont"
+          : props.isPolish
+          ? "PolishFont"
+          : "GlacialIndifference"};
       display: grid;
       grid-template-rows: repeat(2, auto);
       grid-row-gap: ${(props) => (props.isGujarati ? "10px" : "2em")};
@@ -139,9 +149,15 @@ export default ({ language }: { language: string }) => {
   const location = useLocation();
   const isWindows = getIsWindows();
   const isGujarati = location.pathname === "/guj" || language === "guj";
+  const isPolish = location.pathname === "/pl" || language === "pl";
 
   return (
-    <HomepageStyles id="home" isWindows={isWindows} isGujarati={isGujarati}>
+    <HomepageStyles
+      id="home"
+      isWindows={isWindows}
+      isGujarati={isGujarati}
+      isPolish={isPolish}
+    >
       <div id="left">
         <div className="container">
           <ImageCarousel />
@@ -174,9 +190,9 @@ export default ({ language }: { language: string }) => {
             </div>
           </div>
         </div>
-        <Schedule />
-        <Livestream />
-        <QandA />
+        <Schedule language={language} />
+        <Livestream language={language} />
+        <QandA language={language} />
         <Contact />
       </div>
     </HomepageStyles>

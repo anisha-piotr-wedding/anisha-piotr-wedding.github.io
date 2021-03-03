@@ -1,9 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router";
 import styled from "styled-components/macro";
 import { BREAKPOINT_MOBILE, lighterPink, red } from "../constants";
+import { StyleType } from "../Homepage";
 import { getIsWindows, useTranslate } from "../utils";
 
-const QandAStyles = styled.div<{ isWindows: boolean }>`
+const QandAStyles = styled.div<StyleType>`
   background-color: ${lighterPink};
   font-size: ${(props) => (props.isWindows ? 16 : 20)}px;
 
@@ -48,10 +50,19 @@ const QandAStyles = styled.div<{ isWindows: boolean }>`
   }
 `;
 
-export default () => {
+export default ({ language }: { language: string }) => {
+  const location = useLocation();
   const isWindows = getIsWindows();
+  const isGujarati = location.pathname === "/guj" || language === "guj";
+  const isPolish = location.pathname === "/pl" || language === "pl";
+
   return (
-    <QandAStyles id="qAndA" isWindows={isWindows}>
+    <QandAStyles
+      id="qAndA"
+      isWindows={isWindows}
+      isGujarati={isGujarati}
+      isPolish={isPolish}
+    >
       <div className="content">
         <div className="title">{useTranslate("qAndA")}</div>
         {[...Array(5).keys()].map((index) => (
