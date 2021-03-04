@@ -9,6 +9,7 @@ import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import { getIsWindows } from "../utils";
 import { useLocation } from "react-router";
 import { StyleType } from "../Homepage";
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 
 const ScheduleStyles = styled.div<StyleType>`
   background-color: ${lighterPink};
@@ -26,7 +27,8 @@ const ScheduleStyles = styled.div<StyleType>`
   .title {
     font-size: ${(props) => (props.isWindows ? 50 : 56)}px;
     text-align: center;
-    font-family: BrightSunshine;
+    font-family: ${(props) =>
+      props.isPolish ? "PolishTitle" : "BrightSunshine"};
   }
 
   .row {
@@ -38,7 +40,7 @@ const ScheduleStyles = styled.div<StyleType>`
 
     .headerIcon {
       display: grid;
-      grid-template-columns: 5em auto;
+      grid-template-columns: 6em auto;
       justify-content: center;
       align-items: center;
     }
@@ -135,7 +137,10 @@ export default ({ language }: { language: string }) => {
           { header: "date", icon: <EventIcon /> },
           { header: "time", icon: <ScheduleIcon /> },
           { header: "loc", icon: <LocationOnIcon /> },
-          { header: "capacity", icon: <EmojiPeopleIcon /> },
+          {
+            header: "capacity",
+            icon: isPolish ? <InfoOutlinedIcon /> : <EmojiPeopleIcon />,
+          },
         ].map(({ header, icon }) => (
           <div key={header} className={`row ${header}`}>
             <div className="headerIcon">

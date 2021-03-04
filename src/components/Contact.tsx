@@ -1,10 +1,12 @@
 import React from "react";
+import { useLocation } from "react-router";
 import styled from "styled-components/macro";
 import { BREAKPOINT_MOBILE, red } from "../constants";
-import { useTranslate } from "../utils";
+import { StyleType } from "../Homepage";
+import { getIsWindows, useTranslate } from "../utils";
 import Footer from "./Footer";
 
-const ContactStyles = styled.div`
+const ContactStyles = styled.div<StyleType>`
   background-image: url("img/contactImg3.jpg");
   background-size: cover;
   height: 85vh;
@@ -12,6 +14,10 @@ const ContactStyles = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  font-family: ${(props) =>
+    props.isPolish ? "PolishFont" : "GlacialIndifference"};
+
   .content-container {
     margin: 0 auto;
     width: 80%;
@@ -23,7 +29,8 @@ const ContactStyles = styled.div`
       .title {
         font-size: 56px;
         text-align: center;
-        font-family: BrightSunshine;
+        font-family: ${(props) =>
+          props.isPolish ? "PolishTitle" : "BrightSunshine"};
       }
 
       .content-text {
@@ -52,10 +59,19 @@ const ContactStyles = styled.div`
   }
 `;
 
-export default () => {
+export default ({ language }: { language: string }) => {
+  const location = useLocation();
+  const isWindows = getIsWindows();
+  const isGujarati = location.pathname === "/guj" || language === "guj";
+  const isPolish = location.pathname === "/pl" || language === "pl";
   return (
     <>
-      <ContactStyles id="contact">
+      <ContactStyles
+        id="contact"
+        isWindows={isWindows}
+        isGujarati={isGujarati}
+        isPolish={isPolish}
+      >
         <div className="content-container">
           <div className="content">
             <div className="title">{useTranslate("contact")}</div>
@@ -63,7 +79,7 @@ export default () => {
           </div>
         </div>
       </ContactStyles>
-      <Footer />
+      <Footer language={language} />
     </>
   );
 };

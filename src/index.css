@@ -34,6 +34,11 @@ code {
   src: url("/fonts/polish/Arimo-VariableFont_wght.ttf");
 }
 
+@font-face {
+  font-family: PolishTitle;
+  src: url("/fonts/polish/Yesteryear-Regular.ttf");
+}
+
 html {
   scroll-behavior: smooth;
 }

@@ -19,6 +19,8 @@ const LivestreamStyles = styled.div<StyleType>`
     font-size: 56px;
     text-align: center;
     font-family: BrightSunshine;
+    font-family: ${(props) =>
+      props.isPolish ? "PolishTitle" : "BrightSunshine"};
   }
 
   .content {

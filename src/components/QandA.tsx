@@ -18,7 +18,8 @@ const QandAStyles = styled.div<StyleType>`
   .title {
     font-size: 56px;
     text-align: center;
-    font-family: BrightSunshine;
+    font-family: ${(props) =>
+      props.isPolish ? "PolishTitle" : "BrightSunshine"};
   }
 
   .question {
