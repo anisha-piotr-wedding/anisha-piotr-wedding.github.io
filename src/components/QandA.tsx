@@ -8,6 +8,8 @@ import { getIsWindows, useTranslate } from "../utils";
 const QandAStyles = styled.div<StyleType>`
   background-color: ${lighterPink};
   font-size: ${(props) => (props.isWindows ? 16 : 20)}px;
+  font-family: ${(props) =>
+    props.isPolish ? "PolishFont" : "GlacialIndifference"};
 
   .content {
     width: 80%;
