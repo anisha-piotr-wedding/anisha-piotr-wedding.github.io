@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { BREAKPOINT_MOBILE, lighterPink } from "../constants";
+import {
+  BREAKPOINT_MOBILE,
+  BREAKPOINT_TABTOP,
+  lighterPink,
+} from "../constants";
 import { useTranslate } from "../utils";
 import EventIcon from "@material-ui/icons/Event";
 import ScheduleIcon from "@material-ui/icons/Schedule";
@@ -102,6 +106,41 @@ const ScheduleStyles = styled.div<StyleType>`
         height: 28px;
         .MuiSvgIcon-root {
           font-size: 1.3rem !important;
+        }
+      }
+    }
+
+    .capacity {
+      align-items: flex-start !important;
+      padding-bottom: 1em;
+    }
+
+    #ring {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  @media (max-width: ${BREAKPOINT_TABTOP}px) {
+    .content {
+      width: 95%;
+      padding: 3em 0;
+    }
+
+    .row {
+      grid-template-columns: 9em auto;
+      grid-column-gap: 15px;
+      padding-bottom: 10px;
+
+      .headerIcon {
+        grid-template-columns: 5em auto;
+      }
+
+      .icon {
+        width: 32px;
+        height: 32px;
+        .MuiSvgIcon-root {
+          font-size: 1.5rem !important;
         }
       }
     }
