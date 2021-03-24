@@ -2,7 +2,12 @@ import { useMediaQuery } from "@material-ui/core";
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import styled from "styled-components/macro";
-import { BREAKPOINT_TABLET, BREAKPOINT_TABTOP } from "../../constants";
+import {
+  BREAKPOINT_DESKTOP,
+  BREAKPOINT_MOBILE,
+  BREAKPOINT_TABLET,
+  BREAKPOINT_TABTOP,
+} from "../../constants";
 
 const CarouselStyles = styled.div<{ shiftLeft: number }>`
   margin-left: ${(props) => (props.shiftLeft < 0 ? 0 : -props.shiftLeft)}px;
@@ -13,6 +18,16 @@ const CarouselStyles = styled.div<{ shiftLeft: number }>`
     object-fit: cover;
   }
 
+  @media (max-width: ${BREAKPOINT_MOBILE}px) {
+    margin-left: ${(props) =>
+      props.shiftLeft < 0 ? 0 : -props.shiftLeft / 2}px;
+    margin-right: ${(props) =>
+      props.shiftLeft > 0 ? 0 : props.shiftLeft / 2}px;
+    img {
+      height: 42vh;
+    }
+  }
+
   @media (max-width: ${BREAKPOINT_TABLET}px) {
     margin-left: ${(props) =>
       props.shiftLeft < 0 ? 0 : -props.shiftLeft / 2}px;
@@ -20,6 +35,16 @@ const CarouselStyles = styled.div<{ shiftLeft: number }>`
       props.shiftLeft > 0 ? 0 : props.shiftLeft / 2}px;
     img {
       height: 42vh;
+    }
+  }
+
+  @media (min-width: ${BREAKPOINT_DESKTOP}px) {
+    margin-left: ${(props) => (props.shiftLeft < 0 ? 0 : -props.shiftLeft)}px;
+    margin-right: ${(props) => (props.shiftLeft > 0 ? 0 : props.shiftLeft)}px;
+    img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
     }
   }
 `;
@@ -104,12 +129,6 @@ export default () => {
       shiftLeft: 600,
     },
     {
-      imgPath: "img/carousel/derp.jpg",
-      title: "test",
-      subTitle: "subTest",
-      shiftLeft: 500,
-    },
-    {
       imgPath: "img/carousel/snow_scene.jpg",
       title: "test",
       subTitle: "subTest",
@@ -117,7 +136,7 @@ export default () => {
     },
   ];
 
-  const isTablet = useMediaQuery(`(min-width: ${BREAKPOINT_TABTOP}px)`);
+  const isTablet = useMediaQuery(`(max-width: ${BREAKPOINT_TABTOP}px)`);
 
   return (
     <Carousel indicators={false} animation="fade" interval={10000}>
