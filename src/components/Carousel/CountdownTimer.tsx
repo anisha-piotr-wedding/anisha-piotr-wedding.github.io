@@ -1,5 +1,6 @@
 import React from "react";
 import Countdown from "react-countdown";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components/macro";
 import { BREAKPOINT_MOBILE } from "../../constants";
 
@@ -47,44 +48,44 @@ const CountdownStyles = styled.div`
 const WEDDING_TIME_MS =
   Date.now() < 1615705200000 ? 1620500400000 : 1620496800000;
 
-const renderer = ({
-  days,
-  hours,
-  minutes,
-  seconds,
-  completed,
-}: {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-  completed: boolean;
-}) => {
-  return completed ? (
-    <div id="countdown" style={{ fontSize: "24px" }}>
-      It's time to get married!
-    </div>
-  ) : (
-    <div id="countdown">
-      <div className="text">
-        <div className="time">{days}</div>
-        <div className="time">{hours}</div>
-        <div className="time">{minutes}</div>
-        <div className="time">{seconds}</div>
-        <div className="name">days</div>
-        <div className="name">hours</div>
-        <div className="name">minutes</div>
-        <div className="name">seconds</div>
-      </div>
-      {/* {days} days {hours} hours {minutes} minutes {seconds} seconds left! */}
-    </div>
-  );
-};
-
 export default () => {
+  const { t } = useTranslation("Translate");
+  const useRenderer = ({
+    days,
+    hours,
+    minutes,
+    seconds,
+    completed,
+  }: {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+    completed: boolean;
+  }) => {
+    return completed ? (
+      <div id="countdown" style={{ fontSize: "24px" }}>
+        It's time to get married!
+      </div>
+    ) : (
+      <div id="countdown">
+        <div className="text">
+          <div className="time">{days}</div>
+          <div className="time">{hours}</div>
+          <div className="time">{minutes}</div>
+          <div className="time">{seconds}</div>
+          <div className="name">{t("days")}</div>
+          <div className="name">{t("hours")}</div>
+          <div className="name">{t("minutes")}</div>
+          <div className="name">{t("seconds")}</div>
+        </div>
+        {/* {days} days {hours} hours {minutes} minutes {seconds} seconds left! */}
+      </div>
+    );
+  };
   return (
     <CountdownStyles>
-      <Countdown date={WEDDING_TIME_MS} renderer={renderer} />
+      <Countdown date={WEDDING_TIME_MS} renderer={useRenderer} />
     </CountdownStyles>
   );
 };

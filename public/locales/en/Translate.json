@@ -1,5 +1,9 @@
 {
   "home-date": "Saturday May 8<sup>th</sup>, 2021 • 2 O'Clock in the Afternoon",
+  "days": "days",
+  "hours": "hours",
+  "minutes": "minutes",
+  "seconds": "seconds",
 
   "welcome": "Welcome",
   "welcome-1": "Welcome to our wedding website! We along with our parents, Daxa & Vijay and Agata & Janusz and our wedding party, Kshamina and Anna are excited to have you join us for our virtual celebration.",
@@ -25,11 +29,11 @@
   "a3": "We will have more information closer to the date. We are hoping to have a small Mehndi Party the day before for the bride. Regardless of the restrictions, we have decided not to have a reception so please toast us from the comfort of your own home!",
   "q4": "How can I send a gift?",
   "a4": "We are so thankful that you will be present to join us on our big day! That is more than enough, we do not expect anything more.",
-  "q5":"I would really really like to send a gift!",
-  "a5":"We really really are thankful, and your love and support are the biggest gift to us and we do not expect or need any gifts. For those who would still like to bless us with gifts we ask that you please reach out to the bride’s sister, Kshamina at <a href='mailto:kshamina.ghelani@gmail.com'>kshamina.ghelani@gmail.com</a> or the groom's sister, Anna at <a href='mailto:amorchat@outlook.com'>amorchat@outlook.com</a> to make arrangements.",
+  "q5": "I would really really like to send a gift!",
+  "a5": "We really really are thankful, and your love and support are the biggest gift to us and we do not expect or need any gifts. For those who would still like to bless us with gifts we ask that you please reach out to the bride’s sister, Kshamina at <a href='mailto:kshamina.ghelani@gmail.com'>kshamina.ghelani@gmail.com</a> or the groom's sister, Anna at <a href='mailto:amorchat@outlook.com'>amorchat@outlook.com</a> to make arrangements.",
   "q1": "I would love to attend in person, is this possible?",
   "a1": "The current health guidelines allow us to have only a limited number of guests joining us. A few weeks before, depending on restrictions, we will inform guests through email if we are able to invite them to attend in person. We hope to have as many loved ones there with us as we can as per all public health guidelines on the day of the wedding.",
-  "q2":"Is there anything I should know about the livestream?",
+  "q2": "Is there anything I should know about the livestream?",
   "a2": "Once we have the details sorted, we will be posting them here including the link, when to log on, approximately how long it will be for and more.",
 
   "contact": "Contact Us",
