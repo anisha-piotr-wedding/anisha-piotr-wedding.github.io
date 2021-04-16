@@ -60,6 +60,9 @@ export default ({ language }: { language: string }) => {
           <img src="img/ksham-logo.png" alt="ksham-logo" />
         </div>
         <div>© 2021 Kshamina Ghelani</div>
+        <div style={{ fontSize: "10px", paddingTop: "5px" }}>
+          "We'll get married and we'll wear clothes"
+        </div>
       </div>
       <div className="iconCredit">
         <a href="https://www.freevector.com/ganesha-icons-graphics#">
