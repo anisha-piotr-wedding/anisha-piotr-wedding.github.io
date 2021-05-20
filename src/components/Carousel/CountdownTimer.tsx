@@ -69,10 +69,14 @@ export default () => {
     ) : (
       <div id="countdown">
         <div className="text">
-          <div className="time">{days}</div>
+          {/* <div className="time">{days}</div>
           <div className="time">{hours}</div>
           <div className="time">{minutes}</div>
-          <div className="time">{seconds}</div>
+          <div className="time">{seconds}</div> */}
+          <div className="time">??</div>
+          <div className="time">??</div>
+          <div className="time">??</div>
+          <div className="time">??</div>
           <div className="name">{t("days")}</div>
           <div className="name">{t("hours")}</div>
           <div className="name">{t("minutes")}</div>
