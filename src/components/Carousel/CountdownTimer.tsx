@@ -45,7 +45,7 @@ const CountdownStyles = styled.div`
   }
 `;
 
-const WEDDING_TIME_MS = 1624215600000;
+const WEDDING_TIME_MS = 1634497200000;
 
 export default () => {
   const { t } = useTranslation("Translate");
@@ -69,14 +69,10 @@ export default () => {
     ) : (
       <div id="countdown">
         <div className="text">
-          {/* <div className="time">{days}</div>
+          <div className="time">{days}</div>
           <div className="time">{hours}</div>
           <div className="time">{minutes}</div>
-          <div className="time">{seconds}</div> */}
-          <div className="time">??</div>
-          <div className="time">??</div>
-          <div className="time">??</div>
-          <div className="time">??</div>
+          <div className="time">{seconds}</div>
           <div className="name">{t("days")}</div>
           <div className="name">{t("hours")}</div>
           <div className="name">{t("minutes")}</div>
