@@ -12,6 +12,7 @@ import {
   BREAKPOINT_TABLET,
   BREAKPOINT_TABTOP,
   lighterPink,
+  red,
 } from "./constants";
 import { getIsWindows, useTranslate } from "./utils";
 import { useLocation } from "react-router";
@@ -86,6 +87,15 @@ const HomepageStyles = styled.div<StyleType>`
       background-color: ${lighterPink};
       border-radius: 20px;
       width: 25em;
+
+      a {
+        color: ${red};
+        text-decoration: none;
+      }
+
+      a:hover {
+        opacity: 0.6
+      }
     }
 
     .welcome {
@@ -318,6 +328,7 @@ export default ({ language }: { language: string }) => {
               )}
               <div>{useTranslate("welcome-1")}</div>
               <div>{useTranslate("welcome-2")}</div>
+              <a href="https://www.instagram.com/explore/tags/marryingmorchat/">#marryingmorchat</a>
             </div>
           </div>
         </div>

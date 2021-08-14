@@ -52,87 +52,72 @@ const CarouselStyles = styled.div<{ shiftLeft: number }>`
 export default () => {
   const images = [
     {
-      imgPath: "img/carousel/dance.jpg",
-      title: "test2",
-      subTitle: "subTest2",
+      imgPath: "dance.jpg",
     },
     {
-      imgPath: "img/carousel/ski.jpg",
-      title: "test2",
-      subTitle: "subTest2",
+      imgPath: "ski.jpg",
     },
     {
-      imgPath: "img/carousel/safari.jpg",
-      title: "test2",
-      subTitle: "subTest2",
+      imgPath: "safari.jpg",
     },
     {
-      imgPath: "img/carousel/funny.jpg",
-      title: "test",
-      subTitle: "subTest",
+      imgPath: "funny.jpg",
     },
     {
-      imgPath: "img/carousel/hobbit.jpg",
-      title: "test",
-      subTitle: "subTest",
+      imgPath: "water.jpg",
     },
     {
-      imgPath: "img/carousel/landscape.jpg",
-      title: "test",
-      subTitle: "subTest",
+      imgPath: "hobbit.jpg",
+    },
+    {
+      imgPath: "landscape.jpg",
       shiftLeft: 500,
     },
     {
-      imgPath: "img/carousel/derp.jpg",
-      title: "test",
-      subTitle: "subTest",
+      imgPath: "camp2.jpg",
     },
     {
-      imgPath: "img/carousel/ringLandscape.jpg",
-      title: "test",
-      subTitle: "subTest",
+      imgPath: "derp.jpg",
+    },
+    {
+      imgPath: "ringLandscape.jpg",
       shiftLeft: 180,
     },
     {
-      imgPath: "img/carousel/train.jpg",
-      title: "test",
-      subTitle: "subTest",
+      imgPath: "train.jpg",
       shiftLeft: -200,
     },
     {
-      imgPath: "img/carousel/snow_scene.jpg",
-      title: "test",
-      subTitle: "subTest",
+      imgPath: "snow_scene.jpg",
     },
+    {
+      imgPath: "camp.jpg",
+    },
+
   ];
 
   const slimImages = [
     {
-      imgPath: "img/carousel/dance.jpg",
-      title: "test2",
-      subTitle: "subTest2",
+      imgPath: "dance.jpg",
     },
     {
-      imgPath: "img/carousel/funny.jpg",
-      title: "test",
-      subTitle: "subTest",
+      imgPath: "funny.jpg",
     },
     {
-      imgPath: "img/carousel/hobbit.jpg",
-      title: "test",
-      subTitle: "subTest",
+      imgPath: "water.jpg",
     },
     {
-      imgPath: "img/carousel/landscape.jpg",
-      title: "test",
-      subTitle: "subTest",
+      imgPath: "hobbit.jpg",
+    },
+    {
+      imgPath: "landscape.jpg",
       shiftLeft: 600,
     },
     {
-      imgPath: "img/carousel/snow_scene.jpg",
-      title: "test",
-      subTitle: "subTest",
-      shiftLeft: -400,
+      imgPath: "camp2.jpg",
+    },
+    {
+      imgPath: "camp.jpg",
     },
   ];
 
@@ -140,9 +125,9 @@ export default () => {
 
   return (
     <Carousel indicators={false} animation="fade" interval={10000}>
-      {(isTablet ? slimImages : images).map(({ imgPath, title, shiftLeft }) => (
-        <CarouselStyles key={title} shiftLeft={shiftLeft ? shiftLeft : 0}>
-          <img src={imgPath} title={title} alt={title} />
+      {(isTablet ? slimImages : images).map(({ imgPath, shiftLeft }) => (
+        <CarouselStyles key={imgPath} shiftLeft={shiftLeft ? shiftLeft : 0}>
+          <img src={`img/carousel/${imgPath}`} title="" alt="" />
         </CarouselStyles>
       ))}
     </Carousel>
