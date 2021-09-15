@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import Homepage from "../Homepage";
+import Invite from "../Invite";
+import InPersonInvite from "../InPersonInvite";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -17,6 +19,28 @@ function App() {
           exact={true}
           path="/guj"
           component={() => <Homepage language="guj" />}
+        />
+        <Route exact={true} path="/invite" component={Invite} />
+        <Route
+          exact={true}
+          path="/guj/invite"
+          component={() => <Invite language="guj" />}
+        />
+        <Route
+          exact={true}
+          path="/pl/invite"
+          component={() => <Invite language="pl" />}
+        />
+        <Route exact={true} path="/details" component={InPersonInvite} />
+        <Route
+          exact={true}
+          path="/guj/details"
+          component={() => <InPersonInvite language="guj" />}
+        />
+        <Route
+          exact={true}
+          path="/pl/details"
+          component={() => <InPersonInvite language="pl" />}
         />
       </Switch>
     </BrowserRouter>

@@ -10,3 +10,8 @@ export const getIsWindows = () => {
   const { os } = detect();
   return os.includes("Windows");
 };
+
+export function getIsAuthenticated() {
+  const inviteCode = localStorage.getItem("inviteCode");
+  return inviteCode === "TEST";
+}
