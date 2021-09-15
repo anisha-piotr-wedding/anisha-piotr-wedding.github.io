@@ -2,12 +2,7 @@ import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import styled from "styled-components/macro";
-import {
-  BREAKPOINT_TABLET,
-  BREAKPOINT_TABTOP,
-  lighterPink,
-  lightPink,
-} from "./constants";
+import { BREAKPOINT_TABTOP, lighterPink, lightPink } from "./constants";
 import { StyleType } from "./styles";
 import { getIsWindows, useTranslate } from "./utils";
 
