@@ -64,13 +64,9 @@ export default function Invite({ language }: { language: string }) {
   const [inviteCode, setInviteCode] = useState<string | null>(null);
 
   const onSubmit = () => {
-    if (inviteCode && inviteCode === "TEST") {
-      console.log("YES");
+    if (inviteCode) {
       localStorage.setItem("inviteCode", inviteCode);
-    } else {
-      console.log("NO");
     }
-
     const pathString = isPolish ? "/pl/details" : "/details";
     history.push({ pathname: pathString, state: { language } });
   };
