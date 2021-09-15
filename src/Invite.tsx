@@ -2,7 +2,12 @@ import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import styled from "styled-components/macro";
-import { lighterPink, lightPink } from "./constants";
+import {
+  BREAKPOINT_TABLET,
+  BREAKPOINT_TABTOP,
+  lighterPink,
+  lightPink,
+} from "./constants";
 import { StyleType } from "./styles";
 import { getIsWindows, useTranslate } from "./utils";
 
@@ -49,6 +54,24 @@ const InviteStyles = styled.div<StyleType>`
 
       .pushable:active .front {
         transform: translateY(-2px);
+      }
+    }
+  }
+
+  @media (max-width: ${BREAKPOINT_TABTOP}px) {
+    .form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      input {
+        width: 300px;
+      }
+
+      .submit {
+        padding-top: 1em;
       }
     }
   }
