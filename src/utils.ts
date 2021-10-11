@@ -13,5 +13,7 @@ export const getIsWindows = () => {
 
 export function getIsAuthenticated() {
   const inviteCode = localStorage.getItem("inviteCode");
-  return inviteCode === process.env.REACT_APP_INVITE_CODE;
+  return (
+    inviteCode && inviteCode.toLowerCase() === process.env.REACT_APP_INVITE_CODE
+  );
 }
