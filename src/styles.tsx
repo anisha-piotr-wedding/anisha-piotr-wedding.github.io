@@ -174,6 +174,9 @@ export const HomepageStyles = styled.div<StyleType>`
           font-size: ${(props) => (props.isGujarati ? 20 : 18)}px;
         }
       }
+      .inPersonButton {
+        padding-top: 2em;
+      }
     }
   }
 
@@ -221,6 +224,9 @@ export const HomepageStyles = styled.div<StyleType>`
           font-size: ${(props) => (props.isGujarati ? 20 : 18)}px;
         }
       }
+    }
+    .inPersonButton {
+      padding-top: 1em;
     }
   }
 

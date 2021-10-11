@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router";
 import styled from "styled-components/macro";
 import { BREAKPOINT_TABTOP, lighterPink, lightPink } from "./constants";
 import { StyleType } from "./styles";
-import { getIsWindows, useTranslate } from "./utils";
+import { getIsAuthenticated, getIsWindows, useTranslate } from "./utils";
 
 const InviteStyles = styled.div<StyleType>`
   background-color: ${lighterPink};
@@ -78,12 +78,18 @@ export default function Invite({ language }: { language: string }) {
   const isWindows = getIsWindows();
   const isGujarati = location.pathname === "/guj" || language === "guj";
   const isPolish = location.pathname === "/pl" || language === "pl";
+  const isAuthenticated = getIsAuthenticated();
+  const isCodeTried = localStorage.getItem("inviteCode") !== null;
 
   const [inviteCode, setInviteCode] = useState<string | null>(null);
+  const [error, setError] = useState<boolean>(
+    Boolean(isCodeTried && !isAuthenticated)
+  );
 
   const onSubmit = () => {
     if (inviteCode) {
       localStorage.setItem("inviteCode", inviteCode);
+      setError(Boolean(inviteCode !== null && !isAuthenticated));
     }
     const pathString = isPolish ? "/pl/details" : "/details";
     history.push({ pathname: pathString, state: { language } });
@@ -95,7 +101,7 @@ export default function Invite({ language }: { language: string }) {
       isGujarati={isGujarati}
       isPolish={isPolish}
     >
-      <form className="form" onSubmit={onSubmit}>
+      <form className="form" noValidate onSubmit={onSubmit}>
         <TextField
           id="outlined-basic"
           variant="outlined"
@@ -106,6 +112,8 @@ export default function Invite({ language }: { language: string }) {
             borderRadius: "12px",
           }}
           onChange={(event) => setInviteCode(event.target.value)}
+          error={error}
+          helperText={error ? "Incorrect code." : ""}
         />
         <div className="submit">
           <Button className="pushable" type="submit" disableRipple={true}>
