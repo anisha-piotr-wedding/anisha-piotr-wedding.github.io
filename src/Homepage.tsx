@@ -66,15 +66,17 @@ export default ({ language }: { language: string }) => {
               </a>
             </div>
           </div>
-          <div className="inPersonButton">
-            <Button
-              className="pushable"
-              disableRipple={true}
-              onClick={goToInvitePage}
-            >
-              <span className="front">{useTranslate("in-person")}</span>
-            </Button>
-          </div>
+          {!isPolish && !isGujarati && (
+            <div className="inPersonButton">
+              <Button
+                className="pushable"
+                disableRipple={true}
+                onClick={goToInvitePage}
+              >
+                <span className="front">{useTranslate("in-person")}</span>
+              </Button>
+            </div>
+          )}
         </div>
         <Schedule language={language} />
         <Livestream language={language} />
