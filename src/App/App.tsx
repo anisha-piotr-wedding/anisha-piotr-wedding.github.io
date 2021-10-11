@@ -3,6 +3,7 @@ import "./App.css";
 import Homepage from "../Homepage";
 import Invite from "../Invite";
 import InPersonInvite from "../InPersonInvite";
+import SecretCode from "../SecretCode";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -41,6 +42,12 @@ function App() {
           exact={true}
           path="/pl/details"
           component={() => <InPersonInvite language="pl" />}
+        />
+        <Route exact={true} path="/eVtuO35LP" component={SecretCode} />
+        <Route
+          exact={true}
+          path="/pl/eVtuO35LP"
+          component={() => <SecretCode language="pl" />}
         />
       </Switch>
     </BrowserRouter>

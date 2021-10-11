@@ -1,38 +1,23 @@
 import React from "react";
 import styled from "styled-components/macro";
-import {
-  BREAKPOINT_MOBILE,
-  BREAKPOINT_TABTOP,
-  lighterPink,
-} from "../constants";
+import { BREAKPOINT_MOBILE, BREAKPOINT_TABTOP } from "../constants";
 import { useTranslate } from "../utils";
-import EventIcon from "@material-ui/icons/Event";
-import ScheduleIcon from "@material-ui/icons/Schedule";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import { getIsWindows } from "../utils";
 import { useLocation } from "react-router";
 import { StyleType } from "../styles";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 
 const ScheduleStyles = styled.div<StyleType>`
-  background-color: ${lighterPink};
   font-size: ${(props) => (props.isWindows ? 15 : 18)}px;
-  height: 100vh;
   font-family: ${(props) =>
     props.isPolish ? "PolishFont" : "GlacialIndifference"};
 
   .content {
     width: ${(props) => (props.isWindows ? 93 : 85)}%;
     margin: 0 auto;
-    padding: ${(props) => (props.isWindows ? 2 : 5)}em 0;
   }
 
   .title {
     font-size: ${(props) => (props.isWindows ? 50 : 56)}px;
-    text-align: center;
-    font-family: ${(props) =>
-      props.isPolish ? "PolishTitle" : "BrightSunshine"};
   }
 
   .row {
@@ -67,21 +52,6 @@ const ScheduleStyles = styled.div<StyleType>`
   .capacity {
     align-items: flex-start !important;
     padding-bottom: ${(props) => (props.isWindows ? 1 : 2)}em;
-  }
-
-  #ring {
-    width: ${(props) => (props.isWindows ? 100 : 200)}px;
-    height: ${(props) => (props.isWindows ? 100 : 200)}px;
-    overflow: hidden;
-    object-fit: cover;
-    border-radius: 50%;
-    margin: 0em auto;
-
-    img {
-      height: auto;
-      width: 100%;
-      margin-top: -30px;
-    }
   }
 
   @media (max-width: ${BREAKPOINT_MOBILE}px) {
@@ -149,22 +119,15 @@ const ScheduleStyles = styled.div<StyleType>`
       align-items: flex-start !important;
       padding-bottom: 1em;
     }
-
-    #ring {
-      width: 100px;
-      height: 100px;
-    }
   }
 `;
 
 export default ({
   language,
-  includeImage = true,
-  includeCapacity = true,
+  items,
 }: {
   language: string;
-  includeImage?: boolean;
-  includeCapacity?: boolean;
+  items: { header: string; text?: string; icon: any }[];
 }) => {
   const location = useLocation();
   const isWindows = getIsWindows();
@@ -180,32 +143,17 @@ export default ({
     >
       <div className="content">
         <div className="title">{useTranslate("schedule")}</div>
-        {[
-          { header: "date", icon: <EventIcon /> },
-          { header: "time", icon: <ScheduleIcon /> },
-          { header: "loc", icon: <LocationOnIcon /> },
-          {
-            header: "capacity",
-            icon: isPolish ? <InfoOutlinedIcon /> : <EmojiPeopleIcon />,
-          },
-        ].map(({ header, icon }) =>
-          header === "capacity" && !includeCapacity ? (
-            <div key={header}></div>
-          ) : (
-            <div key={header} className={`row ${header}`}>
-              <div className="headerIcon">
-                <div className="header">{useTranslate(header)}</div>
-                <div className="icon">{icon}</div>
-              </div>
-              <div className="val">{useTranslate(`${header}-val`)}</div>
+        {items.map(({ header, text, icon }) => (
+          <div key={header} className={`row ${header}`}>
+            <div className="headerIcon">
+              <div className="header">{useTranslate(header)}</div>
+              <div className="icon">{icon}</div>
             </div>
-          )
-        )}
-        {includeImage && (
-          <div id="ring">
-            <img src="/img/snow-ring.jpg" title="snowRing" alt="snowRing" />
+            <div className="val">
+              {text ? text : useTranslate(`${header}-val`)}
+            </div>
           </div>
-        )}
+        ))}
       </div>
     </ScheduleStyles>
   );
