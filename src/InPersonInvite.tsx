@@ -195,10 +195,10 @@ export default function InPersonInvite({ language }: { language: string }) {
         </div>
         <div className="photos">
           <p>
-            Our Reception is in Byward Market. There are multiple paid parking
-            complexes close by, including 24 York Street and paid parking in
-            front of the restaurant. For a cheaper option, it is a $2 max at
-            City Hall, 110 Laurier.
+            Our Reception is in Byward Market. There are multiple parking
+            options close by, including parking in front of the restaurant,
+            Indigo parking with a an entrance on York. Prices for these may
+            vary. For another option, it is a $2 max at City Hall, 110 Laurier.
           </p>
           <p>
             When you arrive at the restaurant, you will need to show proof of
