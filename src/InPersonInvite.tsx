@@ -197,8 +197,9 @@ export default function InPersonInvite({ language }: { language: string }) {
           <p>
             Our Reception is in Byward Market. There are multiple parking
             options close by, including parking in front of the restaurant,
-            Indigo parking with a an entrance on York. Prices for these may
-            vary. For another option, it is a $2 max at City Hall, 110 Laurier.
+            Indigo parking garage next to the restaurant and a city parking
+            garage a little further. Prices for these may vary. For another
+            option, it is a $2 max at City Hall, 110 Laurier.
           </p>
           <p>
             When you arrive at the restaurant, you will need to show proof of
