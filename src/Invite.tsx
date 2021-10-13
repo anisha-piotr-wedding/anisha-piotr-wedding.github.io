@@ -5,6 +5,9 @@ import styled from "styled-components/macro";
 import { BREAKPOINT_TABTOP, lighterPink, lightPink } from "./constants";
 import { StyleType } from "./styles";
 import { getIsAuthenticated, getIsWindows, useTranslate } from "./utils";
+import { IconButton, Toolbar } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import LeftDrawer from "./components/MenuBar/LeftDrawer";
 
 const InviteStyles = styled.div<StyleType>`
   background-color: ${lighterPink};
@@ -81,6 +84,7 @@ export default function Invite({ language }: { language: string }) {
   const isAuthenticated = getIsAuthenticated();
   const isCodeTried = localStorage.getItem("inviteCode") !== null;
 
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [inviteCode, setInviteCode] = useState<string | null>(null);
   const [error, setError] = useState<boolean>(
     Boolean(isCodeTried && !isAuthenticated)
@@ -96,31 +100,47 @@ export default function Invite({ language }: { language: string }) {
   };
 
   return (
-    <InviteStyles
-      isWindows={isWindows}
-      isGujarati={isGujarati}
-      isPolish={isPolish}
-    >
-      <form className="form" noValidate onSubmit={onSubmit}>
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          label={useTranslate("invite-code")}
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            borderRadius: "12px",
+    <>
+      <Toolbar>
+        <IconButton
+          id="menu"
+          edge="start"
+          color="inherit"
+          aria-label="Menu"
+          onClick={() => {
+            setIsDrawerOpen(true);
           }}
-          onChange={(event) => setInviteCode(event.target.value)}
-          error={error}
-          helperText={error ? "Incorrect code." : ""}
-        />
-        <div className="submit">
-          <Button className="pushable" type="submit" disableRipple={true}>
-            <span className="front">{useTranslate("submit")}</span>
-          </Button>
-        </div>
-      </form>
-    </InviteStyles>
+        >
+          <MenuIcon />
+        </IconButton>
+        <LeftDrawer open={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+      </Toolbar>
+      <InviteStyles
+        isWindows={isWindows}
+        isGujarati={isGujarati}
+        isPolish={isPolish}
+      >
+        <form className="form" noValidate onSubmit={onSubmit}>
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            label={useTranslate("invite-code")}
+            style={{
+              backgroundColor: "white",
+              color: "black",
+              borderRadius: "12px",
+            }}
+            onChange={(event) => setInviteCode(event.target.value)}
+            error={error}
+            helperText={error ? "Incorrect code." : ""}
+          />
+          <div className="submit">
+            <Button className="pushable" type="submit" disableRipple={true}>
+              <span className="front">{useTranslate("submit")}</span>
+            </Button>
+          </div>
+        </form>
+      </InviteStyles>
+    </>
   );
 }

@@ -2,8 +2,10 @@ import React, { Dispatch, SetStateAction } from "react";
 import { SwipeableDrawer } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { lightPink } from "../../constants";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 import { useTranslate } from "../../utils";
+import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 
 const DRAWER_WIDTH = 200;
 
@@ -49,7 +51,17 @@ export default ({
   const closeDrawer = () => setIsDrawerOpen(false);
   const openDrawer = () => setIsDrawerOpen(true);
 
-  const menuItemsList = ["schedule", "livestream", "qAndA", "contact"];
+  const location = useLocation();
+
+  const isPolish = location.pathname === "/pl";
+  const isGujarati = location.pathname === "/guj";
+
+  const isHome = location.pathname === "/" || isPolish || isGujarati;
+  const path = isPolish ? "pl" : isGujarati ? "guj" : "";
+
+  const menuItemsList = isHome
+    ? ["schedule", "livestream", "qAndA", "contact"]
+    : [];
   return (
     <SwipeableDrawer
       anchor="right"
@@ -59,22 +71,33 @@ export default ({
       className="drawer"
     >
       <LeftDrawerStyles>
-        <Link
-          to="home"
-          smooth={true}
-          id="logo-home"
-          duration={100}
-          onClick={closeDrawer}
-        >
-          <img src="img/logo_small.png" title="logo-small" alt="logo-small" />
-        </Link>
+        {isHome ? (
+          <ScrollLink
+            to="home"
+            smooth={true}
+            id="logo-home"
+            duration={100}
+            onClick={closeDrawer}
+          >
+            <img src="img/logo_small.png" title="Home" alt="Home" />
+          </ScrollLink>
+        ) : (
+          <Link
+            id="logo-home"
+            to={{
+              pathname: `/${path}`,
+            }}
+          >
+            <img src="img/logo_small.png" title="Home" alt="Home" />
+          </Link>
+        )}
         {menuItemsList.map((item) => {
           const menuTitle = useTranslate(item);
           return (
             <div key={item} className="menuItem">
-              <Link to={item} smooth={true} onClick={closeDrawer}>
+              <ScrollLink to={item} smooth={true} onClick={closeDrawer}>
                 {menuTitle}
-              </Link>
+              </ScrollLink>
             </div>
           );
         })}
