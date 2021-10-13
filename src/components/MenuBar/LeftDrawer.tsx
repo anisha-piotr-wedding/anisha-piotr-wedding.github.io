@@ -88,7 +88,23 @@ export default ({
               pathname: `/${path}`,
             }}
           >
-            <img src="img/logo_small.png" title="Home" alt="Home" />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <img
+                style={{ paddingBottom: "5px" }}
+                src="img/logo_small.png"
+                title="Home"
+                alt="Home"
+              />
+              <p className="menuItem" style={{ paddingTop: "1px" }}>
+                BACK TO HOME
+              </p>
+            </div>
           </Link>
         )}
         {menuItemsList.map((item) => {
