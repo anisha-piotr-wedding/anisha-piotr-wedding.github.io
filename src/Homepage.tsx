@@ -1,15 +1,18 @@
-import React from "react";
-import CountdownTimer from "./components/Carousel/CountdownTimer";
+import React, { useState } from "react";
+import CountdownTimer, {
+  CountdownStyles,
+} from "./components/Carousel/CountdownTimer";
 import ImageCarousel from "./components/Carousel/ImageCarousel";
 import MenuBar from "./components/MenuBar/MenuBar";
 import Schedule from "./components/Schedule";
-import Livestream from "./components/Livestream";
+import Livestream from "./components/Livestream/Livestream";
 import QandA from "./components/QandA";
 import Contact from "./components/Contact";
+import LivestreamPopup from "./components/Livestream/LivestreamPopup";
 import { getIsAuthenticated, getIsWindows, useTranslate } from "./utils";
 import { useHistory, useLocation } from "react-router";
 import { Button } from "@material-ui/core";
-import { HomepageStyles } from "./styles";
+import { HomepageStyles, PushableButton } from "./styles";
 
 export default ({ language }: { language: string }) => {
   const location = useLocation();
@@ -17,6 +20,11 @@ export default ({ language }: { language: string }) => {
   const isWindows = getIsWindows();
   const isGujarati = location.pathname === "/guj" || language === "guj";
   const isPolish = location.pathname === "/pl" || language === "pl";
+
+  const [open, setOpen] = useState(true);
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   function goToInvitePage() {
     const isAuthenticated = getIsAuthenticated();
@@ -32,10 +40,13 @@ export default ({ language }: { language: string }) => {
       isGujarati={isGujarati}
       isPolish={isPolish}
     >
+      <LivestreamPopup {...{ open, handleClose }} />
       <div id="left">
         <div className="container">
           <ImageCarousel />
-          <CountdownTimer />
+          <CountdownStyles>
+            <CountdownTimer />
+          </CountdownStyles>
         </div>
       </div>
       <div id="right">
@@ -67,7 +78,11 @@ export default ({ language }: { language: string }) => {
             </div>
           </div>
           {!isPolish && !isGujarati && (
-            <div className="inPersonButton">
+            <PushableButton
+              isWindows={isWindows}
+              isGujarati={isGujarati}
+              isPolish={isPolish}
+            >
               <Button
                 className="pushable"
                 disableRipple={true}
@@ -75,7 +90,7 @@ export default ({ language }: { language: string }) => {
               >
                 <span className="front">{useTranslate("in-person")}</span>
               </Button>
-            </div>
+            </PushableButton>
           )}
         </div>
         <Schedule language={language} />

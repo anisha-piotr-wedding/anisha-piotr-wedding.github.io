@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components/macro";
 import { BREAKPOINT_MOBILE } from "../../constants";
 
-const CountdownStyles = styled.div`
+export const CountdownStyles = styled.div`
   #countdown {
     position: absolute;
     top: 90%;
@@ -78,13 +78,8 @@ export default () => {
           <div className="name">{t("minutes")}</div>
           <div className="name">{t("seconds")}</div>
         </div>
-        {/* {days} days {hours} hours {minutes} minutes {seconds} seconds left! */}
       </div>
     );
   };
-  return (
-    <CountdownStyles>
-      <Countdown date={WEDDING_TIME_MS} renderer={useRenderer} />
-    </CountdownStyles>
-  );
+  return <Countdown date={WEDDING_TIME_MS} renderer={useRenderer} />;
 };

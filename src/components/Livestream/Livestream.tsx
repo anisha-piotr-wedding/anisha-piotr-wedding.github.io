@@ -1,8 +1,9 @@
 import React from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components/macro";
-import { StyleType } from "../Homepage";
-import { getIsWindows, useTranslate } from "../utils";
+import { StyleType } from "../../Homepage";
+import { getIsWindows, useTranslate } from "../../utils";
+import LivestreamContent from "./LivesteamContent";
 
 const LivestreamStyles = styled.div<StyleType>`
   display: flex;
@@ -44,7 +45,7 @@ export default ({ language }: { language: string }) => {
       isPolish={isPolish}
     >
       <div className="title">{useTranslate("livestream")}</div>
-      <div className="content">{useTranslate("livestream-1")}</div>
+      <LivestreamContent includeCountdown={false} />
     </LivestreamStyles>
   );
 };

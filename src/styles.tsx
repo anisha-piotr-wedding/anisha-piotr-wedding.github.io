@@ -78,6 +78,7 @@ export const HomepageStyles = styled.div<StyleType>`
       background-color: ${lighterPink};
       border-radius: 20px;
       width: 25em;
+      margin-bottom: 4em;
 
       a {
         color: ${red};
@@ -103,33 +104,6 @@ export const HomepageStyles = styled.div<StyleType>`
       font-size: ${(props) =>
         props.isWindows ? 16 : props.isGujarati ? 28 : 18}px;
       font-weight: ${(props) => (props.isGujarati ? 200 : 400)}px;
-    }
-
-    .inPersonButton {
-      padding-top: 4em;
-      font-family: ${(props) =>
-        props.isPolish ? "PolishFont" : "GlacialIndifference"};
-
-      .pushable {
-        background: ${lighterPink};
-        border-radius: 12px;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        outline-offset: 4px;
-      }
-      .front {
-        display: block;
-        padding: 12px 42px;
-        border-radius: 12px;
-        font-size: ${(props) => (props.isWindows ? 16 : 18)}px;
-        background: ${lightPink};
-        transform: translateY(-6px);
-      }
-
-      .pushable:active .front {
-        transform: translateY(-2px);
-      }
     }
   }
 
@@ -169,6 +143,7 @@ export const HomepageStyles = styled.div<StyleType>`
       .welcome-container {
         padding: 1em;
         width: 80%;
+        margin-bottom: 2em;
 
         .welcome {
           font-size: ${(props) => (props.isGujarati ? 20 : 18)}px;
@@ -219,6 +194,7 @@ export const HomepageStyles = styled.div<StyleType>`
       .welcome-container {
         padding: 1em;
         width: 80%;
+        margin-bottom: 1em;
 
         .welcome {
           font-size: ${(props) => (props.isGujarati ? 20 : 18)}px;
@@ -289,6 +265,7 @@ export const HomepageStyles = styled.div<StyleType>`
         background-color: ${lighterPink};
         border-radius: 20px;
         width: 25em;
+        margin-bottom: 4em;
       }
 
       .welcome {
@@ -307,5 +284,52 @@ export const HomepageStyles = styled.div<StyleType>`
         font-weight: ${(props) => (props.isGujarati ? 200 : 400)}px;
       }
     }
+  }
+`;
+
+export const PushableButton = styled.div<StyleType>`
+  font-family: ${(props) =>
+    props.isPolish ? "PolishFont" : "GlacialIndifference"};
+
+  .pushable {
+    background: ${lighterPink};
+    border-radius: 12px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    text-decoration: none;
+    color: black;
+  }
+  .front {
+    display: block;
+    padding: 12px 42px;
+    border-radius: 12px;
+    font-size: ${(props) => (props.isWindows ? 16 : 18)}px;
+    background: ${lightPink};
+    transform: translateY(-6px);
+  }
+
+  .pushable:active .front {
+    transform: translateY(-2px);
+  }
+
+  .pushable:hover {
+    #icon {
+      transform: rotate(45deg);
+    }
+  }
+
+  @media (max-width: ${BREAKPOINT_TABLET}px) {
+    .front {
+      font-size: 14px !important;
+      padding: 12px 24px;
+    }
+  }
+
+  @media (min-width: ${BREAKPOINT_TABTOP}px) {
+  }
+
+  @media (min-width: ${BREAKPOINT_DESKTOP}px) {
   }
 `;

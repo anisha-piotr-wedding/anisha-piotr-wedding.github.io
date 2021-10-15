@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { SwipeableDrawer } from "@material-ui/core";
 import styled from "styled-components/macro";
-import { lightPink } from "../../constants";
+import { BREAKPOINT_TABLET, lightPink } from "../../constants";
 import { Link as ScrollLink } from "react-scroll";
 import { useTranslate } from "../../utils";
 import { useLocation } from "react-router";
@@ -37,6 +37,12 @@ const LeftDrawerStyles = styled.div`
 
     :hover {
       background-color: ${lightPink} !important;
+    }
+  }
+
+  @media (max-width: ${BREAKPOINT_TABLET}px) {
+    .menuItem {
+      font-size: 16px !important;
     }
   }
 `;

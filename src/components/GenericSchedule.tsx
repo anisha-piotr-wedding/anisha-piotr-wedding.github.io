@@ -55,7 +55,7 @@ const ScheduleStyles = styled.div<StyleType>`
   }
 
   @media (max-width: ${BREAKPOINT_MOBILE}px) {
-    font-size: 15px;
+    font-size: 14px;
 
     .content {
       width: 95%;
